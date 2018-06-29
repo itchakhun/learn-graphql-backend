@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "babel-node src"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.14.10"
+  },
+  "devDependencies": {
+    "babel-plugin-import-graphql": "^2.6.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "version": "1.7.0"
+}
