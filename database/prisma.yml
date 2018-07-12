@@ -6,4 +6,11 @@ datamodel: datamodel.graphql
 
 secret: legacy001
 
-cluster: itchakhun-6f75a7/prisma-eu1
+#cluster: itchakhun-6f75a7/prisma-eu1
+endpoint: https://eu1.prisma.sh/itchakhun-6f75a7/blopper-news/dev
+
+
+#deploy hook
+hooks:
+  post-deploy:
+    - graphql get-schema --project database

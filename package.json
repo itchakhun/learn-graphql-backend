@@ -1,10 +1,11 @@
 {
   "scripts": {
-    "start": "babel-node src",
-    "deploy": "cd database && prisma deploy"
+    "start": "node src",
+    "deploy": "prisma deploy"
   },
   "dependencies": {
-    "graphql-yoga": "^1.14.10"
+    "graphql-yoga": "^1.14.10",
+    "prisma-binding": "^2.1.0"
   },
   "devDependencies": {
     "babel-plugin-import-graphql": "^2.6.0",
