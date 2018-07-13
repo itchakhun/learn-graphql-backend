@@ -5,7 +5,7 @@ const { Query, Mutation, AuthPayload } = require('./resolvers');
 const context = (req) => (Object.assign(req, {
   db: new Prisma({
     typeDefs: './src/generated/prisma.graphql',
-    endpoint: 'https://eu1.prisma.sh/itchakhun-6f75a7/blopper-news/dev',
+    endpoint: 'https://eu1.prisma.sh/supadechdw/blopper-news/dev',
     secret: 'legacy001',
     debug: true,
   })

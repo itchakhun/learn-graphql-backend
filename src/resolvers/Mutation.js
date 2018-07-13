@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import {getUserId} from '../util';
 
 export const post = (r, a, c, i) => {
@@ -14,9 +15,10 @@ export const post = (r, a, c, i) => {
 
 export const signup = async (r,a,c,i) => {
   const password = await bcrypt.hash(a.password, 10)
+  console.log(c.db.mutation)
   const user = await c.db.mutation.createUser({
     data: Object.assign(a, {password})
-  });
+  }, '{id}');
   const token = await jwt.sign({userId: user.id}, APP_SECRET)
 
   return {
