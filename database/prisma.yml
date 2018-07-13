@@ -1,13 +1,9 @@
-service: blopper-news
-
-stage: dev
-
 datamodel: datamodel.graphql
 
 secret: legacy001
 
 #cluster: itchakhun-6f75a7/prisma-eu1
-endpoint: https://eu1.prisma.sh/itchakhun-6f75a7/blopper-news/dev
+endpoint: https://eu1.prisma.sh/supadechdw/blopper-news/dev
 
 
 #deploy hook

@@ -1,20 +1,20 @@
-const { GraphQLServer }  =require('graphql-yoga');
-const { Prisma }  =require('prisma-binding');
-const { Query, Mutation }  =require('./resolvers');
+const { GraphQLServer } = require('graphql-yoga');
+const { Prisma } = require('prisma-binding');
+const { Query, Mutation, AuthPayload } = require('./resolvers');
 
-const context = (req) => ({
-  ...req,
+const context = (req) => (Object.assign(req, {
   db: new Prisma({
     typeDefs: './src/generated/prisma.graphql',
     endpoint: 'https://eu1.prisma.sh/itchakhun-6f75a7/blopper-news/dev',
     secret: 'legacy001',
     debug: true,
   })
-})
+}))
 
 const resolvers = {
   Query,
-  Mutation
+  Mutation,
+  AuthPayload,
 };
 
 const server = new GraphQLServer({
@@ -23,4 +23,4 @@ const server = new GraphQLServer({
   context
 });
 
-server.start(() => console.log('👉🏻  http://localhost:4000 👈🏻'));
+server.start(() => console.log('👉🏻 http://localhost:4000 👈🏻'));
