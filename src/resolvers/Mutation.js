@@ -2,6 +2,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import {getUserId} from '../util';
 
+const APP_SECRET = 'code.crafted.hand'
+
 export const post = (r, a, c, i) => {
   const userId = getUserId(c)
   return c.db.createLink({
@@ -15,7 +17,6 @@ export const post = (r, a, c, i) => {
 
 export const signup = async (r,a,c,i) => {
   const password = await bcrypt.hash(a.password, 10)
-  console.log(c.db.mutation)
   const user = await c.db.mutation.createUser({
     data: Object.assign(a, {password})
   }, '{id}');

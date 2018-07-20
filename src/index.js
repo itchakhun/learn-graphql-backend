@@ -1,6 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
-const { Query, Mutation, AuthPayload } = require('./resolvers');
+const { Query, Mutation, AuthPayload, Subscription } = require('./resolvers');
 
 const context = (req) => (Object.assign(req, {
   db: new Prisma({
@@ -15,6 +15,7 @@ const resolvers = {
   Query,
   Mutation,
   AuthPayload,
+  Subscription
 };
 
 const server = new GraphQLServer({
