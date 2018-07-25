@@ -6,7 +6,7 @@ const APP_SECRET = 'code.crafted.hand'
 
 export const post = (r, a, c, i) => {
   const userId = getUserId(c)
-  return c.db.createLink({
+  return c.db.mutation.createLink({
     data: {
       url: a.url,
       description: a.description,
@@ -41,5 +41,23 @@ export const login = async (r,a,c,i) => {
 
   const token = jwt.sign({userId: user.id}, APP_SECRET)
 
-  return {toekn, user}
+  return {token, user}
+}
+
+
+export const vote = async (rt, args, cont, inf) => {
+  const userId = getUserId(c)
+  const linkExits = await cont.db.exists.Vote({
+    user: { id: userId },
+    link: { id: args.linkId }
+  })
+  if (linkExits) {
+    throw new Error('You have already voted!')
+  }
+  return cont.db.mutation.createVote({
+    data: {
+      user: { connect: { id: userId } },
+      link: { connect: { id: args.linkId } }
+    }
+  }, inf)
 }

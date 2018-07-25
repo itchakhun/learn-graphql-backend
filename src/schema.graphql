@@ -1,9 +1,10 @@
-# import Link, LinkSubscriptionPayload from './generated/prisma.graphql'
+# import Link, LinkSubscriptionPayload, Vote from './generated/prisma.graphql'
 
 type Query {
   info: String
   feeds: [Link!]!
   link(id: ID!): Link!
+  vote(linkId: ID!): Vote
 }
 
 type Mutation {
